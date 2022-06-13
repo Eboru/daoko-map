@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
       "root": "",
@@ -28,9 +28,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "node_modules/@clr/icons/clr-icons.min.css",
+              "node_modules/@clr/ui/clr-ui-dark.min.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@clr/icons/clr-icons.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -93,7 +98,12 @@
             "inlineStyleLanguage": "sass",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images/",
+                "output": "./assets/"
+             }
             ],
             "styles": [
               "src/styles.sass"

@@ -1,0 +1,97 @@
+<h5>Fill the blanks</h5>
+<form clrForm [formGroup]="form" (submit)="submit()">
+  <clr-input-container>
+    <label>Username</label>
+    <input clrInput formControlName="Publisher" />
+    <clr-control-helper>Your message will be identified by this field</clr-control-helper>
+    <clr-control-error>Required.</clr-control-error>
+  </clr-input-container>
+  <clr-textarea-container>
+    <label>Message</label>
+    <textarea clrTextarea formControlName="Message"></textarea>
+    <clr-control-helper>Your message</clr-control-helper>
+    <clr-control-error>Required.</clr-control-error>
+  </clr-textarea-container>
+  <button style="margin-top: 1rem;" type="button" class="btn btn-primary" (click)="openMap = true">
+    <clr-icon shape="map"></clr-icon>
+    Edit location
+  </button>
+  <div>
+    <div>
+      {{lat}}
+    </div>
+    <div>
+      {{lng}}
+    </div>
+  </div>
+
+  <div>
+    <button class="btn btn-success" style="margin-top: 1rem;" [disabled]="!form.valid">
+      <clr-icon shape="upload"></clr-icon>
+      Publicar
+    </button>
+  </div>
+</form>
+
+<div class="modal" [hidden]="!openMap">
+  <div class="modal-dialog modal-xl fadeDown in" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Choose location</h3>
+      </div>
+      <div class="modal-body">
+        <div class="map-container">
+          <div class="map-frame">
+            <div id="map2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="closeMap()">
+          Accept
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade in" aria-hidden="true" *ngIf="openMap"></div>
+
+
+<div class="modal" *ngIf="popError">
+  <div class="modal-dialog modal-xl fadeDown in" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Oh...</h3>
+      </div>
+      <div class="modal-body">
+        {{errorMessage}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="popError = false">
+          Accept
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade in" aria-hidden="true" *ngIf="popError"></div>
+
+<div class="modal" *ngIf="success">
+  <div class="modal-dialog modal-xl fadeDown in" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Success!</h3>
+      </div>
+      <div class="modal-body">
+        Your message has been sent and it's pending for approval
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="redirect()">
+          Accept
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade in" aria-hidden="true" *ngIf="success"></div>
+
