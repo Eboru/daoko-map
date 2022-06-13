@@ -40,6 +40,8 @@
 </div>
 <div class="modal-backdrop fade in" aria-hidden="true" *ngIf="popError"></div>
 
+<button class="btn btn-primary btn-block" (click)="reload()">Reload tasks</button>
+
 <div class="clr-row clr-align-items-center clr-justify-content-center" *ngIf="datosListos">
   <div class="clr-col-lg-4 clr-col-md-4 clr-col-12" *ngFor="let e of queue; let i = index">
     <div class="card">
@@ -53,18 +55,21 @@
             Location: <button class="btn btn-sm btn-link"(click)="viewLocation(i)">View</button>
            </div>
           <div>
+          <div *ngIf="e.reviewd">
+            <clr-icon shape="check"></clr-icon> Reviewed
+          </div>
         </div>
       </div>
       <div class="card-footer">
         <div class="clr-row clr-justify-content-around">
-          <div class="clr-col-4">
+          <div class="clr-col-auto">
               <span>
-                <button class="btn btn-success">Approve</button>
+                <button class="btn btn-success" (click)="doReview(i, true)" [disabled]="e.reviewd">Approve</button>
               </span>
           </div>
-          <div class="clr-col-4">
+          <div class="clr-col-auto">
               <span>
-                <button class="btn btn-danger">Reject</button>
+                <button class="btn btn-danger" (click)="doReview(i, false)" [disabled]="e.reviewd">Reject</button>
               </span>
           </div>
     </div>

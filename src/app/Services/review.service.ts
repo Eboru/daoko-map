@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { GetTasks, GetTasksResposne } from './../structs/Review';
+import { GetTasks, GetTasksResposne, Review, ReviewResponse } from './../structs/Review';
 
 import { Injectable } from '@angular/core';
 import { LoginService } from './login.service';
@@ -16,5 +16,10 @@ export class ReviewService {
     let sesion : GetTasks = new GetTasks
     sesion.token = this.login.getToken()!
     return this.http.post<GetTasksResposne>(environment.apiURL+`/review`, sesion)
+  }
+
+  review(review : Review){
+    review.token = this.login.getToken()!
+    return this.http.post<ReviewResponse>(environment.apiURL+`/approve`, review)
   }
 }

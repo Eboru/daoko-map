@@ -22,6 +22,7 @@ export class PostComponent implements OnInit, OnDestroy, AfterViewInit {
   lng : string = ""
   fullcoord : string = ""
   success: boolean = false
+  disablePublish : boolean = false
 
   constructor(private builder : FormBuilder, private locations : LocationsService, private rotuer: Router) {
     this.form = this.builder.group({
@@ -40,14 +41,14 @@ export class PostComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private initMap(): void {
     this.map = L.map('map2', {
-      center: [39.8282, -98.5795],
-      zoom: 3,
+      center: [35.652832, 139.839478],
+      zoom: 2,
     });
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
         maxZoom: 18,
-        minZoom: 3,
+        minZoom: 2,
         attribution:
           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }
@@ -79,13 +80,17 @@ export class PostComponent implements OnInit, OnDestroy, AfterViewInit {
     message.location = this.fullcoord
     message.message = this.form.get("Message")?.value
     message.publisher = this.form.get("Publisher")?.value
-    this.locations.postMessage(message).subscribe(res=>{
-      if(res.InternalCode != "I_Success"){
+    this.disablePublish = true
+    this.locations.postMessage(message).subscribe({
+      next : (res)=>{
+        if(res.InternalCode != "I_Success"){
+          return
+        }
+        this.success = true
+      },
+      error: (err)=>{
         this.popError = true
         this.errorMessage = "An error ocurred posting your message"
-      }
-      else{
-        this.success = true
       }
     })
   }

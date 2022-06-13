@@ -16,6 +16,7 @@ export class ReviewGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if(this.login.getToken() == undefined || this.login.getToken() == ""){
+      this.login.setToken(undefined)
       this.rotuer.navigate(["map"])
       return false
     }else{

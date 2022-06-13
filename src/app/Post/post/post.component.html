@@ -26,9 +26,9 @@
   </div>
 
   <div>
-    <button class="btn btn-success" style="margin-top: 1rem;" [disabled]="!form.valid">
+    <button class="btn btn-success" style="margin-top: 1rem;" [disabled]="!form.valid || disablePublish">
       <clr-icon shape="upload"></clr-icon>
-      Publicar
+      Publish
     </button>
   </div>
 </form>

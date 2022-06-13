@@ -16,5 +16,17 @@ export class QueuedElement{
   location : string = ""
   publisher : string = ""
   message : string = ""
-  approved : boolean =false
+  approved : boolean = false
+  reviewd : boolean = false
+}
+
+export class Review{
+  token : string = ""
+  id : number = 0
+  approved : boolean = false
+}
+
+export class ReviewResponse{
+  InternalCode : string = ""
+  Payload : string = ""
 }

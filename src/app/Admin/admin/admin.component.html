@@ -17,7 +17,7 @@
           <div class="error active" *ngIf="loginError">
               Invalid user name or password
           </div>
-          <button type="submit" class="btn btn-primary">NEXT</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!form.valid || disableBtn">NEXT</button>
       </div>
   </form>
 </div>
