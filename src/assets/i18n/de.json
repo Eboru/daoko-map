@@ -1,0 +1,53 @@
+{
+  "main.map" : "Map",
+  "main.post" : "Post a message",
+  "main.admin" : "Admin",
+  "main.about" : "About",
+  "marker.writes" : "writes",
+  "marker.date" : "Date ",
+  "marker.reviewer" : "Reviewed by",
+  "marker.translate" : "Translate",
+  "post.success" : "Success!",
+  "post.ok" : "Your message has been sent and it's pending for approval",
+  "post.chooseLocation" : "Choose a location",
+  "post.locationWarning" : "Please do not use your real location",
+  "post.editLocation" : "Edit location",
+  "post.required" : "Required.",
+  "post.yourMessage" : "Your message",
+  "post.message" : "Message",
+  "post.notification" : "Your message will be identified by this field",
+  "post.username" : "Username",
+  "post.directions" : "Fill the blanks",
+  "admin.welcomeMessage" : "Welcome to",
+  "admin.dlovers" : "DLover International Admin Portal",
+  "admin.username" : "Username",
+  "admin.password" : "Password",
+  "admin.viewLocation" : "Viewing Location",
+  "admin.reloadTasks" : "Reload tasks",
+  "admin.user" : "User",
+  "admin.view" : "View",
+  "admin.location" : "Location",
+  "admin.message" : "Message",
+  "admin.reviewed" : "Reviewed",
+  "admin.approve" : "Approve",
+  "admin.reject" : "Reject",
+  "errors.serverDown" : "This should have not happen, we are sorry :/",
+  "errors.translationUnavailable" : "Translation services unavailable",
+  "errors.errorPosting" : "An error ocurred posting your message",
+  "errors.invalidUser" : "Invalid user name or password",
+  "errors.oh" : "Oh...",
+  "btn.accept": "Accept",
+  "btn.publish" : "Publish",
+  "btn.next" : "Next",
+
+
+
+
+
+
+  "eboru.title" : "My info",
+  "eboru.l1" : "I love Anima and Thanks You Blue!",
+  "eboru.l2" : "This website developer",
+  "eboru.l3" : "Almost a graduated in computer science at FCFM, UANL"
+
+}

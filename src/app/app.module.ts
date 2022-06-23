@@ -8,7 +8,7 @@ import { MapComponent } from './Map/map/map.component';
 import { PostComponent } from './Post/post/post.component';
 import { AdminComponent } from './Admin/admin/admin.component';
 import { AboutComponent } from './About/about/about.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -17,6 +17,8 @@ import '@clr/icons/shapes/all-shapes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReviewComponent } from './Admin/review/review.component';
 import { CookieService } from 'ngx-cookie-service';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,16 @@ import { CookieService } from 'ngx-cookie-service';
     ClarityModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http);
+        },
+        deps: [ HttpClient ]
+      }
+    })
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-xl fadeDown in" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Viewing location</h3>
+        <h3 class="modal-title">{{'admin.viewLocation' | translate}}</h3>
       </div>
       <div class="modal-body">
         <div class="map-container">
@@ -13,7 +13,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="closeMap()">
-          Accept
+          {{'btn.accept' | translate}}
         </button>
       </div>
     </div>
@@ -25,14 +25,14 @@
   <div class="modal-dialog modal-xl fadeDown in" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Oh...</h3>
+        <h3 class="modal-title"> {{'errors.oh' | translate}}</h3>
       </div>
       <div class="modal-body">
         {{errorMsg}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="popError = false">
-          Accept
+          {{'btn.accept' | translate}}
         </button>
       </div>
     </div>
@@ -40,23 +40,23 @@
 </div>
 <div class="modal-backdrop fade in" aria-hidden="true" *ngIf="popError"></div>
 
-<button class="btn btn-primary btn-block" (click)="reload()">Reload tasks</button>
+<button class="btn btn-primary btn-block" (click)="reload()">{{'admin.reloadTasks' | translate}}</button>
 
 <div class="clr-row clr-align-items-center clr-justify-content-center" *ngIf="datosListos">
   <div class="clr-col-lg-4 clr-col-md-4 clr-col-12" *ngFor="let e of queue; let i = index">
     <div class="card">
       <div class="card-block">
-        <h4 class="card-title"> User : {{e.publisher}}</h4>
+        <h4 class="card-title"> {{'admin.user' | translate}} : {{e.publisher}}</h4>
         <div class="card-text">
           <div>
-           Message: {{e.message}}
+            {{'admin.message' | translate}}: {{e.message}}
           </div>
           <div>
-            Location: <button class="btn btn-sm btn-link"(click)="viewLocation(i)">View</button>
+            {{'admin.location' | translate}}: <button class="btn btn-sm btn-link"(click)="viewLocation(i)">{{'admin.view' | translate}}</button>
            </div>
           <div>
           <div *ngIf="e.reviewd">
-            <clr-icon shape="check"></clr-icon> Reviewed
+            <clr-icon shape="check"></clr-icon> {{'admin.reviewed' | translate}}
           </div>
         </div>
       </div>
@@ -64,12 +64,12 @@
         <div class="clr-row clr-justify-content-around">
           <div class="clr-col-auto">
               <span>
-                <button class="btn btn-success" (click)="doReview(i, true)" [disabled]="e.reviewd">Approve</button>
+                <button class="btn btn-success" (click)="doReview(i, true)" [disabled]="e.reviewd">{{'admin.approve' | translate}}</button>
               </span>
           </div>
           <div class="clr-col-auto">
               <span>
-                <button class="btn btn-danger" (click)="doReview(i, false)" [disabled]="e.reviewd">Reject</button>
+                <button class="btn btn-danger" (click)="doReview(i, false)" [disabled]="e.reviewd">{{'admin.reject' | translate}}</button>
               </span>
           </div>
     </div>

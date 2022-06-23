@@ -1,20 +1,20 @@
-<h5>Fill the blanks</h5>
+<h5>{{'post.directions' | translate}}</h5>
 <form clrForm [formGroup]="form" (submit)="submit()">
   <clr-input-container>
-    <label>Username</label>
+    <label>{{'post.username' | translate}}</label>
     <input clrInput formControlName="Publisher" />
-    <clr-control-helper>Your message will be identified by this field</clr-control-helper>
-    <clr-control-error>Required.</clr-control-error>
+    <clr-control-helper>{{'post.notification' | translate}}</clr-control-helper>
+    <clr-control-error>{{'post.required' | translate}}</clr-control-error>
   </clr-input-container>
   <clr-textarea-container>
-    <label>Message</label>
+    <label>{{'post.message' | translate}}</label>
     <textarea clrTextarea formControlName="Message"></textarea>
-    <clr-control-helper>Your message</clr-control-helper>
-    <clr-control-error>Required.</clr-control-error>
+    <clr-control-helper>{{'post.yourMessage' | translate}}</clr-control-helper>
+    <clr-control-error>{{'post.required' | translate}}</clr-control-error>
   </clr-textarea-container>
   <button style="margin-top: 1rem;" type="button" class="btn btn-primary" (click)="openMap = true">
     <clr-icon shape="map"></clr-icon>
-    Edit location
+    {{'post.editLocation' | translate}}
   </button>
   <div>
     <div>
@@ -28,7 +28,7 @@
   <div>
     <button class="btn btn-success" style="margin-top: 1rem;" [disabled]="!form.valid || disablePublish">
       <clr-icon shape="upload"></clr-icon>
-      Publish
+      {{'btn.publish' | translate}}
     </button>
   </div>
 </form>
@@ -37,7 +37,8 @@
   <div class="modal-dialog modal-xl fadeDown in" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Choose location</h3>
+        <h3 class="modal-title">{{'post.chooseLocation' | translate}}</h3>
+        <h6>{{'post.locationWarning' | translate}}</h6>
       </div>
       <div class="modal-body">
         <div class="map-container">
@@ -48,7 +49,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="closeMap()">
-          Accept
+          {{'btn.accept' | translate}}
         </button>
       </div>
     </div>
@@ -61,14 +62,14 @@
   <div class="modal-dialog modal-xl fadeDown in" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Oh...</h3>
+        <h3 class="modal-title">{{'errors.oh' | translate}}</h3>
       </div>
       <div class="modal-body">
         {{errorMessage}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="popError = false">
-          Accept
+          {{'btn.accept' | translate}}
         </button>
       </div>
     </div>
@@ -80,14 +81,14 @@
   <div class="modal-dialog modal-xl fadeDown in" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Success!</h3>
+        <h3 class="modal-title">{{'post.success' | translate}}</h3>
       </div>
       <div class="modal-body">
-        Your message has been sent and it's pending for approval
+        {{'post.ok' | translate}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="redirect()">
-          Accept
+          {{'btn.accept' | translate}}
         </button>
       </div>
     </div>

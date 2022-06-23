@@ -16,3 +16,7 @@
 #map {
   height: 100%;
 }
+
+::ng-deep .marker-cluster{
+  color: black !important;
+}

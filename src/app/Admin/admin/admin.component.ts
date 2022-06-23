@@ -39,6 +39,7 @@ export class AdminComponent implements OnInit {
       next: (res) => {
         if (res.InternalCode != 'I_Success') {
           this.loginError = true;
+          this.disableBtn = false
           return;
         } else {
           this.login.setToken(res.Payload.token);
@@ -48,6 +49,7 @@ export class AdminComponent implements OnInit {
       },
       error: (err) => {
         this.loginError = true;
+        this.disableBtn = false
         return;
       },
     });

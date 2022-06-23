@@ -4,6 +4,7 @@ import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as L from 'leaflet';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-post',
@@ -24,7 +25,7 @@ export class PostComponent implements OnInit, OnDestroy, AfterViewInit {
   success: boolean = false
   disablePublish : boolean = false
 
-  constructor(private builder : FormBuilder, private locations : LocationsService, private rotuer: Router) {
+  constructor(private builder : FormBuilder, private locations : LocationsService, private rotuer: Router, private ngxTranslate : TranslateService) {
     this.form = this.builder.group({
       Publisher : ["", Validators.required],
       Message : ["", Validators.required]
@@ -83,6 +84,7 @@ export class PostComponent implements OnInit, OnDestroy, AfterViewInit {
     this.disablePublish = true
     this.locations.postMessage(message).subscribe({
       next : (res)=>{
+        this.disablePublish = false
         if(res.InternalCode != "I_Success"){
           return
         }
@@ -90,7 +92,10 @@ export class PostComponent implements OnInit, OnDestroy, AfterViewInit {
       },
       error: (err)=>{
         this.popError = true
-        this.errorMessage = "An error ocurred posting your message"
+        this.disablePublish = false
+        this.ngxTranslate.get("errors.errorPosting").subscribe(res=>{
+          this.errorMessage = res
+        })
       }
     })
   }
@@ -105,8 +110,8 @@ export class PostComponent implements OnInit, OnDestroy, AfterViewInit {
 
   closeMap(){
     this.openMap = false
-    this.lat = "Lat : " + this.marker?.getLatLng().lat
-    this.lng = "Lng : " + this.marker?.getLatLng().lng
+    this.lat = "Lat : " + this.marker?.getLatLng().wrap().lat
+    this.lng = "Lng : " + this.marker?.getLatLng().wrap().lng
     this.fullcoord = this.marker?.getLatLng().lat + "," + this.marker?.getLatLng().lng
 
   }

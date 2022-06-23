@@ -1,23 +1,22 @@
 <div class="login-wrapper">
   <form class="login" [formGroup]="form" (submit)="submit()">
       <section class="title">
-          <h3 class="welcome">Welcome to</h3>
-          Company Product Name
-          <h5 class="hint">Use your Company ID to sign in or create one now</h5>
+          <h3 class="welcome">{{'admin.welcomeMessage' | translate}}</h3>
+          {{'admin.dlovers' | translate}}
       </section>
       <div class="login-group">
           <clr-input-container>
-              <label class="clr-sr-only">Username</label>
-              <input type="text" name="username" clrInput placeholder="Username" formControlName="username" required=""/>
+              <label class="clr-sr-only">{{'admin.username' | translate}}</label>
+              <input type="text" name="username" clrInput placeholder="{{'admin.username' | translate}}" formControlName="username" required=""/>
           </clr-input-container>
           <clr-password-container>
-              <label class="clr-sr-only">Password</label>
-              <input type="password" name="password" clrPassword placeholder="Password" formControlName="password" required/>
+              <label class="clr-sr-only">{{'admin.password' | translate}}</label>
+              <input type="password" name="password" clrPassword placeholder="{{'admin.password' | translate}}" formControlName="password" required/>
           </clr-password-container>
           <div class="error active" *ngIf="loginError">
-              Invalid user name or password
+            {{'errors.invalidUser' | translate}}
           </div>
-          <button type="submit" class="btn btn-primary" [disabled]="!form.valid || disableBtn">NEXT</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!form.valid || disableBtn">{{'btn.next' | translate}}</button>
       </div>
   </form>
 </div>

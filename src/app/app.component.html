@@ -2,24 +2,37 @@
   <clr-header class="header-1">
     <div class="branding">
       <a href="/map" class="nav-link">
-        <clr-icon shape="map"></clr-icon>
-        <span class="title">Map</span>
+        <clr-icon shape="map-marker"></clr-icon>
+        <span class="title">{{ 'main.map' | translate}}</span>
       </a>
     </div>
+    <div class="header-actions">
+      <clr-dropdown>
+          <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
+              <clr-icon shape="language"></clr-icon>
+          </button>
+          <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+              <a clrDropdownItem style="text-align: center;" (click)="setIdioma('jp')"><img src="/assets/countryFlags/JP.svg" width="45" height="30"></a>
+              <a clrDropdownItem style="text-align: center;" (click)="setIdioma('es')"><img src="/assets/countryFlags/MX.svg" width="36" height="24">&nbsp;&nbsp;&nbsp;<img src="/assets/countryFlags/ES.svg" width="36" height="24"></a>
+              <a clrDropdownItem style="text-align: center;" (click)="setIdioma('de')"><img src="/assets/countryFlags/AT.svg" width="36" height="24">&nbsp;&nbsp;&nbsp;<img src="/assets/countryFlags/DE.svg" width="36" height="24"></a>
+              <a clrDropdownItem style="text-align: center;" (click)="setIdioma('en')"><img src="/assets/countryFlags/GB.svg" width="36" height="24">&nbsp;&nbsp;&nbsp;<img src="/assets/countryFlags/US.svg" width="36" height="24"></a>
+          </clr-dropdown-menu>
+      </clr-dropdown>
+  </div>
   </clr-header>
   <nav class="subnav" [clr-nav-level]="1">
     <ul class="nav">
       <li class="nav-item">
-        <a routerLink="map" routerLinkActive="active" class="nav-link nav-text">Map</a>
+        <a routerLink="map" routerLinkActive="active" class="nav-link nav-text">{{'main.map' | translate}}</a>
       </li>
       <li class="nav-item">
-        <a routerLink="post" routerLinkActive="active" class="nav-link nav-text">Post a message</a>
+        <a routerLink="post" routerLinkActive="active" class="nav-link nav-text">{{'main.post' | translate}}</a>
       </li>
       <li class="nav-item">
-        <a routerLink="admin" routerLinkActive="active" class="nav-link nav-text">Admin</a>
+        <a routerLink="admin" routerLinkActive="active" class="nav-link nav-text">{{'main.admin' | translate}}</a>
       </li>
       <li class="nav-item">
-        <a routerLink="about" routerLinkActive="active" class="nav-link nav-text">About</a>
+        <a routerLink="about" routerLinkActive="active" class="nav-link nav-text">{{'main.about' | translate}}</a>
       </li>
     </ul>
   </nav>
